@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
-const topicSchema = mongoose.Schema({
+const echoSchema = mongoose.Schema({
+  creator: String,
   title: String,
   videoLink: String,
   channel: String,
@@ -17,6 +18,6 @@ const topicSchema = mongoose.Schema({
   }
 });
 
-const TopicLayout = mongoose.model('TopicLayout', topicSchema )
+const EchoLayout = mongoose.model('EchoLayout', echoSchema )
 
-module.exports = TopicLayout;
+module.exports = EchoLayout;

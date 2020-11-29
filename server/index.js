@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser') ;
 const mongoose = require('mongoose');
 const cors = require('cors');
-const topicsRoutes = require('./routes/topics')
+const echosRoutes = require('./routes/echos')
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 app.use(cors());
 
 // Prefix for Routes
-app.use('/topics', topicsRoutes)
+app.use('/echos', echosRoutes)
 
 
 // Mongo DB cluster setup
