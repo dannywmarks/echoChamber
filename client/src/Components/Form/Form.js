@@ -1,9 +1,12 @@
-import React, {useState} from 'react'
-import useStyles from './styles';
+import React, {useState, useEffect} from 'react'
 import { TextField, Button, Typography, Paper} from '@material-ui/core'
 import FileBase from 'react-file-base64'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { createEcho, updateEcho } from '../../actions/echos'
+import useStyles from './styles';
 
-const Form = () => {
+const Form = ({currentId, setCurrentId}) => {
 
   const initialState = {
     creator: '',
@@ -14,22 +17,40 @@ const Form = () => {
   }
 
   const [echoData, setEchoData] = useState(initialState)
-
+  const echo = useSelector((state) => currentId ? state.echos.find((e) => e._id === currentId) : null)
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(echo) setEchoData(echo)
+  }, [echo])
+
+
   const handleSubmit = e => {
     e.preventDefault()
+    if(currentId) {
+      dispatch(updateEcho(currentId, echoData))
+    } else {
+      dispatch(createEcho(echoData))
+    }
+    clear()
   }
 
   const handleChange = e => {
     const {name, value} = e.target
     setEchoData(e => ({ ...e, [name]: value}))
   }
+
+  const clear = () => {
+    setCurrentId(null)
+    setEchoData(initialState)
+  }
   
 
   return (
     <Paper className={classes.paper}>
-      <form autoComplete="off" noValidate className={classes.form} onSubmit={handleSubmit}>
-        <Typography variant="h6">Create an Echo</Typography>
+      <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+  <Typography variant="h6">{currentId ? 'Editing ' : 'Create '}an Echo</Typography>
         <TextField 
           name='creator' 
           variant='outlined' 
@@ -65,13 +86,6 @@ const Form = () => {
           fullWidth
           value={echoData.tags}
           onChange={handleChange}/>
-        <TextField 
-          name='selectedFile' 
-          variant='outlined' 
-          label='Select Image' 
-          fullWidth
-          value={echoData.selectedFile}
-          onChange={handleChange}/>
           <div className={classes.fileInput}>
             <FileBase
               type="file"
@@ -79,6 +93,24 @@ const Form = () => {
               onDone={({base64}) => setEchoData({ ...echoData, selectedFile: base64 })} 
             />
           </div>
+         <Button 
+          className={classes.buttonSubmit} 
+          variant="contained" 
+          color="primary" 
+          size="large" 
+          type="submit" 
+          fullWidth
+          >
+            Submit
+        </Button>
+        <Button 
+          variant="contained" 
+          color="secondary" 
+          size="small" 
+          onClick={clear}
+          fullWidth>
+            Clear
+        </Button>
       </form>
     </Paper>
   )

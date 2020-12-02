@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 const API_URL = 'https://www.googleapis.com/youtube/v3';
-const URL = 'http://localhost:5000/topics'
+const URL = 'http://localhost:5000/echos'
 
 export const fetchEchos = () => axios.get(URL)
+export const createEcho = (newEcho) => axios.post(URL, newEcho);
+export const updateEcho = (id, updatedEcho) => axios.patch(`${URL}/${id}`, updatedEcho)
+export const deleteEcho = (id) => axios.delete(`${URL}/${id}`)
