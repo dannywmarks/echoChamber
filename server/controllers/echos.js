@@ -6,10 +6,9 @@ const router = express.Router()
 const EchoLayout = require('../models/echoLayout')
 
 /** Get Chambers */
-const getEchos = async (req, res, next) => {
+const getEchos = async (req, res) => {
   try {
     const echoLayouts =  await EchoLayout.find()
-    console.log(echoLayouts)
     res.status(200).json(echoLayouts)
   } catch (err) {
     res.status(404).json({ message: err.message })
