@@ -6,7 +6,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import useStyles from './styles';
 import moment from 'moment'
 import { useDispatch } from 'react-redux';
-import { deleteEcho } from '../../../actions/echos'
+import { deleteEcho, likeEcho } from '../../../actions/echos'
 
 const Echo = ({ echo, setCurrentId }) => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Echo = ({ echo, setCurrentId }) => {
     <Card className={classes.card}>
       <CardMedia className={classes.media} image={echo.selectedFile} title={echo.title} />
       <div className={classes.overlay}>
-        <Typography variant="h6">{echo.title}</Typography>
+        <Typography variant="h6">{echo.creator}</Typography>
         <Typography variant="body2">{moment(echo.createdAt).fromNow()}</Typography> 
       </div>
       <div className={classes.overlay2}>
@@ -30,14 +30,14 @@ const Echo = ({ echo, setCurrentId }) => {
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary">{echo.tags.map((tag) => `#${tag} `)}</Typography>
       </div>
-      
+      <Typography className={classes.title}  variant="h4" gutterBottom>{echo.title}</Typography>
       <CardContent>
-        <Typography className={classes.title} variant="h5" gutterBottom>{echo.message}</Typography>
+        <Typography className={classes.body2} color="textSecondary" variant="h6" gutterBottom>{echo.notes}</Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => {}}>
-        <ThumbUpAltIcon fontSize="small" />Like 
-          {` `}{echo.likeCount}
+        <Button size="small" color="primary" onClick={() => {dispatch(likeEcho(echo._id))}}>
+        <ThumbUpAltIcon fontSize="small" />&nbsp;Like&nbsp;
+          {echo.likeCount} 
         </Button>
         <Button size="small" color="primary" onClick={() => {dispatch(deleteEcho(echo._id))}}>
           <DeleteIcon fontSize="small" />

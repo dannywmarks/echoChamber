@@ -85,7 +85,7 @@ const Form = ({currentId, setCurrentId}) => {
           label='Tags' 
           fullWidth
           value={echoData.tags}
-          onChange={handleChange}/>
+          onChange={(e) => setEchoData({ ...echoData, tags: e.target.value.split(',')})}/>
           <div className={classes.fileInput}>
             <FileBase
               type="file"
