@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const echosRoutes = require('./routes/echos')
 const userRoutes = require('./routes/users')
+const authRoutes = require('./routes/auth')
 const dotenv = require('dotenv');
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(cors());
 // Prefix for Routes
 app.use('/echos', echosRoutes)
 app.use('/users', userRoutes)
+app.use('/auth', authRoutes)
 
 
 // Mongo DB cluster setup
