@@ -46,45 +46,46 @@ const Form = ({currentId, setCurrentId}) => {
     setEchoData(initialState)
   }
   
+  const {creator, title, notes, tags, channel} = echoData
 
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-  <Typography variant="h6">{currentId ? 'Editing ' : 'Create '}an Echo</Typography>
+  <Typography variant="h6">Create a Chamber</Typography>
         <TextField 
           name='creator' 
           variant='outlined' 
           label='Creator' 
           fullWidth
-          value={echoData.creator}
+          value={creator}
           onChange={handleChange}/>
         <TextField 
           name='title' 
           variant='outlined' 
           label='Title' 
           fullWidth
-          value={echoData.title}
+          value={title}
           onChange={handleChange}/>
         <TextField 
           name='channel' 
           variant='outlined' 
           label='Channel' 
           fullWidth
-          value={echoData.channel}
+          value={channel}
           onChange={handleChange}/>
         <TextField 
           name='notes' 
           variant='outlined' 
           label='Notes' 
           fullWidth
-          value={echoData.notes}
+          value={notes}
           onChange={handleChange}/>
         <TextField 
           name='tags' 
           variant='outlined' 
           label='Tags' 
           fullWidth
-          value={echoData.tags}
+          value={tags}
           onChange={(e) => setEchoData({ ...echoData, tags: e.target.value.split(',')})}/>
           <div className={classes.fileInput}>
             <FileBase
