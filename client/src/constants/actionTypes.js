@@ -17,3 +17,4 @@ export const LOGIN_FAIL = "LOGIN_FAIL"
 export const LOGOUT = "LOGOUT"
 // Youtube
 export const LOAD_VIDEOS = "LOAD_VIDEOS"
+export const SELECT_VIDEO = "SELECT_VIDEO"
