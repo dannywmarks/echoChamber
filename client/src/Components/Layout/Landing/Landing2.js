@@ -20,24 +20,25 @@ const Landing2 = () => {
   return (
     <div>
       <Grid container style={{minHeight: '100vh'}}>
-        <Grid item xs={12} sm={6}>
-        {/* <Youtube/> */}
+        {/* <Grid item xs={12} sm={6}>
+       
 
         <img
             src={twilightZone}
             style={{ width: '100%', height: '100%', objectFit: 'cover'}}
             alt="twilight zone"
           />
-{/* 
+
         { registerOrLogin === true  ? <img
             src={twilightZone}
             style={{ width: '100%', height: '100%', objectFit: 'cover'}}
             alt="twilight zone"
-          /> : <Welcome/>} */}
+          /> : <Welcome/>}
           
           
-        </Grid>
-        <Grid container item xs={12} sm={6} alignItems='center' direction='column' justify="space-between" style={{padding: 10}}>
+        </Grid> */}
+        
+        <Grid container  alignItems='center' direction='column' justify="space-between" style={{padding: 10}}>
           <Alerts/>
         
           <div />

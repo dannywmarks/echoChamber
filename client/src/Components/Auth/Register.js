@@ -51,7 +51,7 @@ const RegisterForm = () => {
   }
 
   if(isAuthenticated) {
-    return <Redirect to='/echos' />
+    return <Redirect to='/chambers' />
   }
 
   

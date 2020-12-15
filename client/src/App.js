@@ -8,6 +8,7 @@ import setAuthToken from './utils/setAuthToken'
 import Landing from './Components/Layout/Landing/Landing2'
 import Login from './Components/Auth/Login'
 import Landing2 from './Components/Layout/Landing/Landing'
+import Youtube from './Components/Layout/Landing/Youtube'
 import Register from './Components/Auth/Register'
 import store from './store'
 
@@ -28,10 +29,12 @@ useEffect(() => {
 
   return (
     <Router>
-      {/* <Navbar2 /> */}
+      
+      <Navbar2 />
       {/* <Alerts /> */}
+      <Container>
       <Route exact path='/' component={Landing}/>
-      <Route exact path='/echos' component={Landing2}/>
+      <Route exact path='/chambers' component={Landing2}/>
       <Container maxwidth='lg'>
           {/* <Navbar /> */}
           
@@ -41,6 +44,10 @@ useEffect(() => {
           </Switch>
         
         </Container>
+     
+      </Container>
+     
+      
     </Router>
   
   )

@@ -3,7 +3,7 @@ import { TextField, Button, Typography, Paper} from '@material-ui/core'
 import FileBase from 'react-file-base64'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { createEcho, updateEcho } from '../../actions/echos'
+import { createChamber, updateChamber } from '../../actions/chambers'
 import useStyles from './styles';
 
 const Form = ({currentId, setCurrentId}) => {
@@ -16,37 +16,37 @@ const Form = ({currentId, setCurrentId}) => {
     tags: '',
   }
 
-  const [echoData, setEchoData] = useState(initialState)
-  const echo = useSelector((state) => currentId ? state.echos.find((e) => e._id === currentId) : null)
+  const [chamberData, setChamberData] = useState(initialState)
+  const chamber = useSelector((state) => currentId ? state.chambers.find((e) => e._id === currentId) : null)
   const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(echo) setEchoData(echo)
-  }, [echo])
+    if(chamber) setChamberData(chamber)
+  }, [chamber])
 
 
   const handleSubmit = e => {
     e.preventDefault()
     if(currentId) {
-      dispatch(updateEcho(currentId, echoData))
+      dispatch(updateChamber(currentId, chamberData))
     } else {
-      dispatch(createEcho(echoData))
+      dispatch(createChamber(chamberData))
     }
     clear()
   }
 
   const handleChange = e => {
     const {name, value} = e.target
-    setEchoData(e => ({ ...e, [name]: value}))
+    setChamberData(e => ({ ...e, [name]: value}))
   }
 
   const clear = () => {
     setCurrentId(null)
-    setEchoData(initialState)
+    setChamberData(initialState)
   }
   
-  const {creator, title, notes, tags, channel} = echoData
+  const {creator, title, notes, tags, channel} = chamberData
 
   return (
     <Paper className={classes.paper}>
@@ -86,12 +86,12 @@ const Form = ({currentId, setCurrentId}) => {
           label='Tags' 
           fullWidth
           value={tags}
-          onChange={(e) => setEchoData({ ...echoData, tags: e.target.value.split(',')})}/>
+          onChange={(e) => setChamberData({ ...chamberData, tags: e.target.value.split(',')})}/>
           <div className={classes.fileInput}>
             <FileBase
               type="file"
               multiple={false}
-              onDone={({base64}) => setEchoData({ ...echoData, selectedFile: base64 })} 
+              onDone={({base64}) => setChamberData({ ...chamberData, selectedFile: base64 })} 
             />
           </div>
          <Button 

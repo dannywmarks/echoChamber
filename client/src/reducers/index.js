@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import echos from './echos'
+import chambers from './chambers'
 import alert from './alert'
 import auth from './auth'
 import youtube from './youtube'
 
 
-export default combineReducers({ echos, alert, auth, youtube });
+export default combineReducers({ chambers, alert, auth, youtube });

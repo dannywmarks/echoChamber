@@ -82,5 +82,5 @@ export const login = ( email, password ) => async dispatch => {
 // Logout / Clear Chambers
 export const logout = () => dispatch => {
   console.log('logout')
-  dispatch({ type: LOGOUT},)
+  dispatch({ type: LOGOUT })
 }

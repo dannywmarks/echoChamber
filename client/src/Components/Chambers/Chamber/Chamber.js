@@ -6,40 +6,40 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import useStyles from './styles';
 import moment from 'moment'
 import { useDispatch } from 'react-redux';
-import { deleteEcho, likeEcho } from '../../../actions/echos'
+import { deleteChamber, likeChamber } from '../../../actions/chambers'
 
-const Echo = ({ echo, setCurrentId }) => {
+const Chamber = ({ chamber, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   
   return (
     <Card className={classes.card}>
-      <CardMedia className={classes.media} image={echo.selectedFile} title={echo.title} />
+      <CardMedia className={classes.media} image={chamber.selectedFile} title={chamber.title} />
       <div className={classes.overlay}>
-        <Typography variant="h6">{echo.creator}</Typography>
-        <Typography variant="body2">{moment(echo.createdAt).fromNow()}</Typography> 
+        <Typography variant="h6">{chamber.creator}</Typography>
+        <Typography variant="body2">{moment(chamber.createdAt).fromNow()}</Typography> 
       </div>
       <div className={classes.overlay2}>
         <Button 
           style={{color: 'white'}} 
           size='small' 
-          onClick={() => setCurrentId(echo._id)}> 
+          onClick={() => setCurrentId(chamber._id)}> 
           <MoreHorizIcon fontSize="default" />
         </Button>
       </div>
       <div className={classes.details}>
-        <Typography variant="body2" color="textSecondary">{echo.tags.map((tag) => `#${tag} `)}</Typography>
+        <Typography variant="body2" color="textSecondary">{chamber.tags.map((tag) => `#${tag} `)}</Typography>
       </div>
-      <Typography className={classes.title}  variant="h4" gutterBottom>{echo.title}</Typography>
+      <Typography className={classes.title}  variant="h4" gutterBottom>{chamber.title}</Typography>
       <CardContent>
-        <Typography className={classes.body2} color="textSecondary" variant="h6" gutterBottom>{echo.notes}</Typography>
+        <Typography className={classes.body2} color="textSecondary" variant="h6" gutterBottom>{chamber.notes}</Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => {dispatch(likeEcho(echo._id))}}>
+        <Button size="small" color="primary" onClick={() => {dispatch(likeChamber(chamber._id))}}>
         <ThumbUpAltIcon fontSize="small" />&nbsp;Like&nbsp;
-          {echo.likeCount} 
+          {chamber.likeCount} 
         </Button>
-        <Button size="small" color="primary" onClick={() => {dispatch(deleteEcho(echo._id))}}>
+        <Button size="small" color="primary" onClick={() => {dispatch(deleteChamber(chamber._id))}}>
           <DeleteIcon fontSize="small" />
           Delete
         </Button>
@@ -49,4 +49,4 @@ const Echo = ({ echo, setCurrentId }) => {
   )
 }
 
-export default Echo
+export default Chamber

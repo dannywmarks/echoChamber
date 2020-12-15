@@ -1,6 +1,7 @@
 import React from 'react'
 import { AppBar, Typography, Toolbar, Button, IconButton } from '@material-ui/core'
 import { MenuIcon } from '@material-ui/icons/Menu'
+import YouTubeIcon from '@material-ui/icons/YouTube';
 import useStyles from './styles';
 import { Link } from 'react-router-dom'
 import EchoImg from '../../../images/blackEcho.jpg'
