@@ -1,7 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
+import BackgroundImage from '../../../images/oc-twilight-zone.jpg'
 
 
 export default makeStyles((theme) => ({
+  // root: {
+  //   minHeight: '100vh',
+  //   backgroundImage: `url(${BackgroundImage})`,
+  //   backgroundRepeat: 'no-repeat',
+  //   backgroundSize: 'cover'
+  // },
   appBar: {
     borderRadius: 15,
     margin: '30px 0',
@@ -24,3 +31,5 @@ export default makeStyles((theme) => ({
   }
   
 }));
+
+

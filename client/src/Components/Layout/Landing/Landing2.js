@@ -1,25 +1,27 @@
-import React, {useState} from 'react'
-import { Grid, Container, Typography, Button } from '@material-ui/core'
-import twilightZone from '../../../images/oc-twilight-zone.jpg'
-import rabbit from '../../../images/rabbit2.png'
-import Welcome from '../../Layout/Welcome/Welcome'
-import Login from '../../Auth/Login'
-import Register from '../../Auth/Register'
-import Alerts from '../Alert/Alert'
-import Youtube from '../../Youtube/YoutubeList/YoutubeList'
-
+import React, { useState } from "react";
+import { Grid, Container, Typography, Button } from "@material-ui/core";
+import twilightZone from "../../../images/oc-twilight-zone.jpg";
+import rabbit from "../../../images/rabbit2.png";
+import Welcome from "../../Layout/Welcome/Welcome";
+import Login from "../../Auth/Login";
+import Register from "../../Auth/Register";
+import Alerts from "../Alert/Alert";
+import Youtube from "../../Youtube/YoutubeList/YoutubeList";
+import useStyles from "./styles";
 
 
 const Landing2 = () => {
-  const [registerOrLogin, setRegisterOrLogin] = useState(false)
+  const classes = useStyles();
+  const [registerOrLogin, setRegisterOrLogin] = useState(false);
 
   const handleOnClick = () => {
-    setRegisterOrLogin(!registerOrLogin)
-  }
+    setRegisterOrLogin(!registerOrLogin);
+  };
 
   return (
-    <div>
-      <Grid container style={{minHeight: '100vh'}}>
+    <div className={classes.root}>
+     
+      <Grid  container style={{ minHeight: "100vh" }}>
         {/* <Grid item xs={12} sm={6}>
        
 
@@ -37,30 +39,43 @@ const Landing2 = () => {
           
           
         </Grid> */}
-        
-        <Grid container  alignItems='center' direction='column' justify="space-between" style={{padding: 10}}>
-          <Alerts/>
-        
-          <div />
-          <h1 style={{ fontFamily: 'TwyliteZone', fontSize: '50px'}}>The Echo Chamber</h1>
-          <div>
-            <Grid container justify="center">
-             <div>
-              <img src={rabbit} width={200} alt='rabbit' style={{marginBottom: 20, padding: 20, display: 'block'}} />
-             </div>
+
+        <Grid
+          container
+          alignItems="center"
+          direction="column"
+          justify="space-between"
+          style={{ padding: 10 }}
+        >
+          <Alerts />
+
+          <Grid container justify="center">
+            <div style={{ display: "block" }}>
+              <h1 style={{ fontFamily: "TwyliteZone", fontSize: "50px" }}>
+                The Echo Chamber
+              </h1>
               
-      
-              { registerOrLogin === true  ? <Login />  : <Register /> }
+                <img
+                  src={rabbit}
+                  width={200}
+                  alt="rabbit"
+                  style={{ marginLeft: 75}}
+                />
               
-              <Button onClick={handleOnClick}>{ registerOrLogin === true  ? 'Register an account'  : 'Already have account'  }</Button>
-            </Grid>
-          </div>
-          <div />
-          
+            </div>
+
+            {registerOrLogin === true ? <Login /> : <Register />}
+
+            <Button onClick={handleOnClick}>
+              {registerOrLogin === true
+                ? "Register an account"
+                : "Already have account"}
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default Landing2
+export default Landing2;
