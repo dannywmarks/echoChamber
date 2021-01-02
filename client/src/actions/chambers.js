@@ -23,7 +23,7 @@ export const getChamber = (id) => async (dispatch) => {
   try {
     console.log(id)
     const { data } = await api.getChamber(id);
-    dispatch({ type: FETCH_ALL, payload: data });
+    dispatch({ type: FETCH_BY_ID, payload: data });
   } catch (err) {
     console.log(err.message);
   }
