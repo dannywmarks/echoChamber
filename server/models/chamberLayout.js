@@ -1,15 +1,11 @@
 const mongoose = require("mongoose");
 
-const echoSchema = mongoose.Schema({
+const chamberSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectID,
     ref: "user",
   },
-  chamber: {
-    type: mongoose.Schema.Types.ObjectID,
-    ref: "chamber",
-  },
-  chamber_id: {
+  creator: {
     type: String,
   },
   title: {
@@ -18,13 +14,7 @@ const echoSchema = mongoose.Schema({
   videoLink: {
     type: String,
   },
-  author: {
-    type: String,
-  },
-  bookLink: {
-    type: String,
-  },
-  webLink: {
+  channel: {
     type: String,
   },
   notes: {
@@ -33,12 +23,25 @@ const echoSchema = mongoose.Schema({
   selectedFile: {
     type: String,
   },
+  tags: [String],
+  echos: [
+    {
+      echo: {
+        type: mongoose.Schema.Types.ObjectID,
+        ref: "echo",
+      },
+    },
+  ],
+  likeCount: {
+    type: Number,
+    default: 0,
+  },
   createdAt: {
     type: Date,
     default: new Date(),
   },
 });
 
-const EchoLayout = mongoose.model("echo", echoSchema);
+const ChamberLayout = mongoose.model("chamber", chamberSchema);
 
-module.exports = EchoLayout;
+module.exports = ChamberLayout;

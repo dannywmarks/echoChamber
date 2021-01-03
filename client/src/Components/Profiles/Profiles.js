@@ -17,7 +17,7 @@ const Profiles = () => {
   return <>
     {loading ? <CircularProgress/> : <><h1>PROFILES</h1></>}
     <p>
-      Browse and connect with developers
+      Browse and connect with other chambers
     </p>
     <div className="profiles">
       {profiles.profiles.length > 0 ? (

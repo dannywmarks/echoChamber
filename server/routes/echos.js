@@ -1,12 +1,22 @@
-const express = require('express')
-const { getEchos, createEcho, updateEcho, deleteEcho, likeEcho } = require('../controllers/echos')
-
+const express = require("express");
+const {
+  getEchos,
+  createEcho,
+  updateEcho,
+  deleteEcho,
+  getEchosId
+} = require("../controllers/echos");
+const auth = require("../middleware/auth");
 const router = new express.Router();
 
-router.get('/', getEchos)
-router.post('/', createEcho)
-router.patch('/:id', updateEcho)
-router.delete('/:id', deleteEcho)
-router.patch('/:id/likeEcho', likeEcho)
+// get all echos
+router.get("/", getEchos);
+// create a echo
+router.get("/:id", getEchosId)
+router.post("/", auth, createEcho);
+// update echo
+router.patch("/:id", auth, updateEcho);
+// adding echo
+router.delete("/:id", auth, deleteEcho);
 
 module.exports = router;

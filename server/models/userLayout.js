@@ -1,26 +1,25 @@
-const mongoose = require('mongoose')
-
+const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   register_date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-const EchoLayout = mongoose.model('user', userSchema )
+const UserLayout = mongoose.model("user", userSchema);
 
-module.exports = EchoLayout;
+module.exports = UserLayout;
